@@ -147,6 +147,27 @@ export const ENGAGEMENT = {
   caption: 'Business meeting with the Belgium Ambassador to Nigeria in Abuja Nigeria',
 };
 
+// Home page photo carousel: every photo used on the site, each with a short label.
+export const CAROUSEL = [
+  { src: '/images/ceo.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah, Chief Executive Officer', pos: 'center 25%' },
+  { src: '/images/ceo-speaking.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah addressing an audience', pos: '45% center' },
+  { src: '/images/ceo-office.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah at his desk', pos: '66% center' },
+  { src: '/images/ceo-meeting-1.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah at a business meeting', pos: 'center 62%' },
+  { src: '/images/ceo-meeting-2.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah at a business meeting with guests', pos: 'center 62%' },
+  { src: '/images/ceo-guest.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah with a guest' },
+  { src: '/images/ceo-public.jpg', label: 'CEO', alt: 'Catechist Ambrose Jonah at a public event' },
+  { src: '/images/ceo-asepa-feature.jpg', label: 'CEO', alt: 'ASEPA Umuahia Zone feature on Catechist Ambrose Jonah', pos: 'center 25%' },
+  { src: '/images/md.jpg', label: 'MD', alt: 'Mrs Jonah Rita, Managing Director', pos: 'center 25%' },
+  { src: '/images/md-studio.jpg', label: 'MD', alt: 'Mrs Jonah Rita in a studio portrait', pos: 'center 30%' },
+  { src: '/images/md-smile.jpg', label: 'MD', alt: 'Mrs Jonah Rita smiling', pos: 'center 52%' },
+  { src: '/images/md-casual.jpg', label: 'MD', alt: 'Mrs Jonah Rita', pos: 'center 52%' },
+  { src: '/images/cfo.jpg', label: 'CFO', alt: 'Chukwulobe Ndonwanne Leonard, Chief Financial Officer', pos: 'center 15%' },
+  { src: '/images/cfo-event.jpg', label: 'CFO', alt: 'Chukwulobe Ndonwanne Leonard at an event', pos: '52% center' },
+  { src: '/images/belgium-ambassador-meeting.jpg', label: 'BUSINESS MEETING', alt: 'Business meeting with the Belgium Ambassador to Nigeria in Abuja Nigeria' },
+  ...[1, 2, 3, 4].map((n) => ({ src: `/images/staff/staff-${n}.jpg`, label: 'STAFF', alt: 'Bermutex staff at work during a clean-up exercise' })),
+  ...CONSTRUCTION_GALLERY.map((g) => ({ src: g.src, label: 'CONSTRUCTION TRUCKS', alt: g.alt })),
+];
+
 export const STAFF = {
   eyebrow: 'Our Staff',
   title: 'The hands that keep Bermutex moving',

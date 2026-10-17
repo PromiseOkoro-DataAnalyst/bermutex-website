@@ -123,21 +123,24 @@ function TextPage({ spread, pageNo }) {
   );
 }
 
-// On phones each spread is one page: photo on top, write-up below.
-function SinglePage({ spread, index }) {
-  if (!spread) return <div className="fb-single fb-blank" />;
-  return (
-    <div className="fb-single">
-      <PhotoPage spread={spread} pageNo={index * 2 + 1} />
-      <TextPage spread={spread} pageNo={index * 2 + 2} />
-    </div>
-  );
+// On phones the book is held upright: one full page at a time,
+// a photo page followed by its write-up page.
+const PAGES = SPREADS.flatMap((spread, i) => [
+  { spread, kind: 'photo', no: i * 2 + 1 },
+  { spread, kind: 'text', no: i * 2 + 2 },
+]);
+
+function PhonePage({ page }) {
+  if (!page) return <div className="fb-page fb-blank" />;
+  return page.kind === 'photo'
+    ? <PhotoPage spread={page.spread} pageNo={page.no} />
+    : <TextPage spread={page.spread} pageNo={page.no} />;
 }
 
 export default function FlipBook() {
-  const isMobile = useMedia('(max-width: 860px)');
+  const isMobile = useMedia('(max-width: 700px)');
   const reduceMotion = useMedia('(prefers-reduced-motion: reduce)');
-  const [cur, setCur] = useState(0);
+  const [pos, setPos] = useState(0); // page index (two pages per spread)
   const [flip, setFlip] = useState(null); // { dir: 'next' | 'back', target }
   const timer = useRef(null);
   const touch = useRef(null);
@@ -150,30 +153,40 @@ export default function FlipBook() {
     return () => window.removeEventListener('keydown', onEsc);
   }, [lightbox]);
 
+  const lastPage = PAGES.length - 1;
+  // On wide screens a turn moves a whole spread; on phones, one page.
+  const cur = Math.floor(pos / 2);
   const last = SPREADS.length - 1;
 
   const go = useCallback(
     (target) => {
-      if (flip || target === cur || target < 0 || target > last) return;
-      const dir = target > cur ? 'next' : 'back';
+      if (flip || target === pos || target < 0 || target > lastPage) return;
+      // Same spread on a wide screen: nothing to turn.
+      if (!isMobile && Math.floor(target / 2) === Math.floor(pos / 2)) {
+        setPos(target);
+        return;
+      }
+      const dir = target > pos ? 'next' : 'back';
       if (reduceMotion) {
-        setCur(target);
+        setPos(target);
         return;
       }
       setFlip({ dir, target });
       clearTimeout(timer.current);
       timer.current = setTimeout(() => {
-        setCur(target);
+        setPos(target);
         setFlip(null);
       }, FLIP_MS);
     },
-    [flip, cur, last, reduceMotion]
+    [flip, pos, lastPage, reduceMotion, isMobile]
   );
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  const next = () => go(cur + 1);
-  const prev = () => go(cur - 1);
+  const next = () => (isMobile ? go(pos + 1) : go((cur + 1) * 2));
+  const prev = () => (isMobile ? go(pos - 1) : go((cur - 1) * 2));
+  const atStart = isMobile ? pos === 0 : cur === 0;
+  const atEnd = isMobile ? pos === lastPage : cur === last;
 
   const onKey = (e) => {
     if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
@@ -192,9 +205,10 @@ export default function FlipBook() {
     () => LEADERS.map((l) => ({ leader: l, start: SPREADS.findIndex((s) => s.leader.id === l.id) })),
     []
   );
-  const activeLeader = SPREADS[flip ? flip.target : cur].leader.id;
+  const showing = flip ? flip.target : pos;
+  const activeLeader = PAGES[showing].spread.leader.id;
 
-  const t = flip?.target;
+  const t = flip ? Math.floor(flip.target / 2) : undefined; // target spread
   const S = (i) => SPREADS[i];
 
   let stage;
@@ -223,19 +237,20 @@ export default function FlipBook() {
       </div>
     );
   } else {
-    const under = flip?.dir === 'next' ? t : cur;
+    const tp = flip?.target;
+    const under = flip?.dir === 'next' ? tp : pos;
     stage = (
       <div className="fb-spread single">
-        <SinglePage spread={S(under)} index={under} />
+        <PhonePage page={PAGES[under]} />
         {flip?.dir === 'next' && (
           <div className="fb-leaf leaf-single-out" aria-hidden="true">
-            <div className="fb-face front"><SinglePage spread={S(cur)} index={cur} /><span className="fb-sheen" /></div>
+            <div className="fb-face front"><PhonePage page={PAGES[pos]} /><span className="fb-sheen" /></div>
             <div className="fb-face back fb-paper-back" />
           </div>
         )}
         {flip?.dir === 'back' && (
           <div className="fb-leaf leaf-single-in" aria-hidden="true">
-            <div className="fb-face front"><SinglePage spread={S(t)} index={t} /><span className="fb-sheen" /></div>
+            <div className="fb-face front"><PhonePage page={PAGES[tp]} /><span className="fb-sheen" /></div>
             <div className="fb-face back fb-paper-back" />
           </div>
         )}
@@ -254,7 +269,7 @@ export default function FlipBook() {
             role="tab"
             aria-selected={activeLeader === leader.id}
             className={`fb-tab ${activeLeader === leader.id ? 'active' : ''}`}
-            onClick={() => go(start)}
+            onClick={() => go(start * 2)}
           >
             <img src={leader.spreads[0].photo} alt="" />
             <span>
@@ -277,22 +292,22 @@ export default function FlipBook() {
         onTouchEnd={onTouchEnd}
       >
         {stage}
-        <button type="button" className="fb-side prev" onClick={prev} disabled={cur === 0 || !!flip} aria-label="Previous page">
+        <button type="button" className="fb-side prev" onClick={prev} disabled={atStart || !!flip} aria-label="Previous page">
           <Icon name="arrowLeft" size={22} />
         </button>
-        <button type="button" className="fb-side next" onClick={next} disabled={cur === last || !!flip} aria-label="Next page">
+        <button type="button" className="fb-side next" onClick={next} disabled={atEnd || !!flip} aria-label="Next page">
           <Icon name="arrowRight" size={22} />
         </button>
       </div>
 
       <div className="fb-controls glass">
-        <button type="button" className="fb-btn" onClick={prev} disabled={cur === 0 || !!flip} aria-label="Previous page">
+        <button type="button" className="fb-btn" onClick={prev} disabled={atStart || !!flip} aria-label="Previous page">
           <Icon name="arrowLeft" size={20} /> <span>Previous</span>
         </button>
         <span className="fb-counter" aria-live="polite">
-          Page {(flip ? t : cur) + 1} of {SPREADS.length}
+          Page {isMobile ? showing + 1 : Math.floor(showing / 2) + 1} of {isMobile ? PAGES.length : SPREADS.length}
         </span>
-        <button type="button" className="fb-btn primary" onClick={next} disabled={cur === last || !!flip} aria-label="Next page">
+        <button type="button" className="fb-btn primary" onClick={next} disabled={atEnd || !!flip} aria-label="Next page">
           <span>Next page</span> <Icon name="arrowRight" size={20} />
         </button>
       </div>

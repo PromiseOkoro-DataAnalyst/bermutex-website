@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal.jsx';
 import DivisionRows from '../components/DivisionRows.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import StaffSection from '../components/StaffSection.jsx';
+import PhotoCarousel from '../components/PhotoCarousel.jsx';
 import useTitle from '../useTitle.js';
 
 export default function Home() {
@@ -79,6 +80,9 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* PHOTO CAROUSEL */}
+      <PhotoCarousel />
 
       {/* DIVISIONS */}
       <section className="section">
