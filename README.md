@@ -46,7 +46,6 @@ Push this folder to GitHub, then import the repository in Vercel (framework: Vit
 
 ## Still to add when available
 
-- Office street address (currently shows "Umuahia, Abia State, Nigeria")
 - Social media links
 - Project photos (a Projects page can be added later)
 - More engagement photos (see `ENGAGEMENT` in `src/data/content.js`)

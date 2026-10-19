@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal.jsx';
 import DivisionRows from '../components/DivisionRows.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import StaffSection from '../components/StaffSection.jsx';
+import ManagementTeam from '../components/ManagementTeam.jsx';
 import PhotoCarousel from '../components/PhotoCarousel.jsx';
 import useTitle from '../useTitle.js';
 
@@ -25,7 +26,7 @@ export default function Home() {
               Investing in<br />places that <span className="gold-text">work.</span>
             </h1>
             <p className="lead anim-up d2">
-              Property, environment, agriculture, marketing and energy. Bermutex Investment Limited brings five
+              Property, construction, environment, agriculture, marketing, energy and maritime. Bermutex Investment Limited brings six
               specialist divisions together under one dependable name.
             </p>
             <div className="btn-row anim-up d3">
@@ -45,7 +46,7 @@ export default function Home() {
             <div className="orbit-ring" />
             <div className="hero-card glass">
               <img src="/images/mark.png" alt="" className="hero-mark" />
-              <div className="hero-card-title">5 Divisions</div>
+              <div className="hero-card-title">6 Divisions</div>
               <div className="hero-card-sub">One standard of delivery</div>
             </div>
             {DIVISIONS.map((d, i) => (
@@ -153,7 +154,7 @@ export default function Home() {
                 <Link to="/leadership" className="leader-teaser glass">
                   <img src={l.spreads[0].photo} alt={l.name} style={{ objectPosition: l.spreads[0].photoPos }} />
                   <span className="lt-body">
-                    <span className={`fb-badge ${{ CEO: 'navy', MD: 'outline', CFO: 'gold' }[l.badge] || 'navy'}`}>{l.badge}</span>
+                    <span className={`fb-badge ${{ CEO: 'navy', MD: 'outline', DOF: 'gold' }[l.badge] || 'navy'}`}>{l.badge}</span>
                     <strong>{l.name}</strong>
                     <em>{l.role}</em>
                     <span className="lt-more">Read profile <Icon name="arrowRight" size={16} /></span>
@@ -162,6 +163,7 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+          <ManagementTeam />
         </div>
       </section>
 

@@ -28,7 +28,7 @@ export default function About() {
           <Reveal delay={100} className="prose">
             <p>
               We develop and manage property, keep communities clean and safe, bring agricultural produce to market,
-              help businesses grow and support the energy sector. Each of our five divisions is run by people who know
+              help businesses grow, lease out construction equipment, and support the energy, maritime and safety sectors. Each of our six divisions is run by people who know
               their field, and all of them share the same commitment to quality.
             </p>
             <p>
@@ -93,7 +93,7 @@ export default function About() {
       <section className="section">
         <div className="container">
           <Reveal className="section-head split">
-            <h2 className="display-md">Our five divisions</h2>
+            <h2 className="display-md">Our six divisions</h2>
             <Link to="/divisions" className="text-link">View all divisions <Icon name="arrowRight" size={18} /></Link>
           </Reveal>
           <div className="mini-div-grid">

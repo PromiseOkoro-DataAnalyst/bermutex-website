@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero.jsx';
 import FlipBook from '../components/FlipBook.jsx';
 import CtaBand from '../components/CtaBand.jsx';
+import ManagementTeam from '../components/ManagementTeam.jsx';
 import useTitle from '../useTitle.js';
 
 export default function Leadership() {
@@ -17,6 +18,7 @@ export default function Leadership() {
       <section className="section leadership-section">
         <div className="container">
           <FlipBook />
+          <ManagementTeam />
         </div>
       </section>
       <CtaBand />

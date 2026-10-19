@@ -4,7 +4,7 @@ import Reveal from './Reveal.jsx';
 // A continuous strip of photo cards that glides across the screen.
 // The list is rendered twice so the loop is seamless; hovering or
 // touching the strip pauses it.
-// Mix the photos so the labels alternate (CEO, MD, CFO, STAFF, ...).
+// Mix the photos so the labels alternate (CEO, MD, DOF, STAFF, ...).
 function interleave(list) {
   const groups = [];
   list.forEach((item) => {

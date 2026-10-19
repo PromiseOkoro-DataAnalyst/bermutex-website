@@ -13,8 +13,8 @@ export default function Divisions() {
     <>
       <PageHero
         eyebrow="Our Divisions"
-        title="Five divisions. One standard of delivery."
-        intro="Explore the full range of services Bermutex Investment Limited offers across property, environment, agriculture, marketing and energy."
+        title="Six divisions. One standard of delivery."
+        intro="Explore the full range of services Bermutex Investment Limited offers across property and construction, environment, agriculture, marketing, energy, maritime and safety."
         crumbs={[{ label: 'Divisions' }]}
       />
 

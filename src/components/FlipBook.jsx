@@ -5,7 +5,7 @@ import Icon from './Icon.jsx';
 
 const FLIP_MS = 950;
 const LightboxContext = createContext(() => {});
-const BADGE_TONE = { CEO: 'navy', MD: 'outline', CFO: 'gold' };
+const BADGE_TONE = { CEO: 'navy', MD: 'outline', DOF: 'gold' };
 
 function useMedia(query) {
   const get = () => (typeof window !== 'undefined' ? window.matchMedia(query).matches : false);

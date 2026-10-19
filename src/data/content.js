@@ -8,7 +8,7 @@ export const COMPANY = {
   phoneDisplay: '+234 808 831 7742',
   phoneIntl: '2348088317742',
   email: 'bermutexinvestmentltd@gmail.com',
-  location: 'Umuahia, Abia State, Nigeria',
+  location: '82 Kaduna Street, by Enugu Road, Umuahia, Abia State',
 };
 
 export const DEFAULT_WA_MESSAGE =
@@ -44,20 +44,21 @@ export const DIVISIONS = [
   {
     slug: 'real-estate',
     number: '01',
-    name: 'Real Estate & Property Development',
-    shortName: 'Real Estate & Property',
+    name: 'Real Estate, Construction & Equipment Leasing',
+    shortName: 'Real Estate & Construction',
     icon: 'building',
     galleryTitle: 'Construction & heavy equipment',
     galleryIntro: 'Building and civil works are supported by proper plant, including Caterpillar motor graders for site preparation, grading and road works.',
     gallery: CONSTRUCTION_GALLERY,
     tagline: 'Planning, building and managing spaces that hold their value.',
     summary:
-      'Property development, construction, project management, town planning, and estate and facility management.',
+      'Property development, construction, construction equipment leasing, project management, town planning, and estate and facility management.',
     intro:
-      'From the first site plan to the day-to-day care of a finished estate, our real estate division handles every stage of the property lifecycle. We plan carefully, build to standard and manage assets so they keep their value for years to come.',
+      'From the first site plan to the day-to-day care of a finished estate, this division handles every stage of the property lifecycle. We plan carefully, build to standard, lease out construction plant and equipment, and manage assets so they keep their value for years to come.',
     services: [
       { title: 'Property Development', text: 'Residential and commercial developments delivered from concept and approvals through to handover.' },
       { title: 'Construction Works', text: 'Building and civil construction carried out by skilled crews under strict quality and safety control.' },
+      { title: 'Construction Equipment Leasing', text: 'Leasing of construction plant and heavy equipment, including motor graders, for site preparation, grading and road works.' },
       { title: 'Project Management', text: 'Cost, schedule and contractor management so projects finish on time and within budget.' },
       { title: 'Town Planning', text: 'Layout design, land use planning and regulatory guidance for estates and communities.' },
       { title: 'Estate Management', text: 'Tenant relations, rent administration and the long-term care of property portfolios.' },
@@ -140,6 +141,22 @@ export const DIVISIONS = [
       { title: 'Environmental Support', text: 'Waste handling and site remediation support, drawing on our environmental expertise.' },
     ],
   },
+  {
+    slug: 'maritime-safety',
+    number: '06',
+    name: 'Maritime & Safety Services',
+    shortName: 'Maritime & Safety',
+    icon: 'anchor',
+    tagline: 'Safe, well-run operations on land and water.',
+    summary:
+      'Maritime services, and health, safety and environment (HSE) support for sites, projects and operations.',
+    intro:
+      'Bermutex supports clients on the water and on site. Our maritime services back marine and waterway operations, while our safety team, led by a dedicated Safety Manager, helps keep every project and workplace safe and compliant.',
+    services: [
+      { title: 'Maritime Services', text: 'Support services for marine and waterway operations, delivered to industry standards.' },
+      { title: 'Safety Services', text: 'Health, safety and environment (HSE) support, site safety supervision and compliance for projects and operations.' },
+    ],
+  },
 ];
 
 export const ENGAGEMENT = {
@@ -161,11 +178,22 @@ export const CAROUSEL = [
   { src: '/images/md-studio.jpg', label: 'MD', alt: 'Mrs Jonah Rita in a studio portrait', pos: 'center 30%' },
   { src: '/images/md-smile.jpg', label: 'MD', alt: 'Mrs Jonah Rita smiling', pos: 'center 52%' },
   { src: '/images/md-casual.jpg', label: 'MD', alt: 'Mrs Jonah Rita', pos: 'center 52%' },
-  { src: '/images/cfo.jpg', label: 'CFO', alt: 'Chukwulobe Ndonwanne Leonard, Chief Financial Officer', pos: 'center 15%' },
-  { src: '/images/cfo-event.jpg', label: 'CFO', alt: 'Chukwulobe Ndonwanne Leonard at an event', pos: '52% center' },
+  { src: '/images/cfo.jpg', label: 'DOF', alt: 'Chukwulobe Ndonwanne Leonard, Director of Finance', pos: 'center 15%' },
+  { src: '/images/cfo-event.jpg', label: 'DOF', alt: 'Chukwulobe Ndonwanne Leonard at an event', pos: '52% center' },
   { src: '/images/belgium-ambassador-meeting.jpg', label: 'BUSINESS MEETING', alt: 'Business meeting with the Belgium Ambassador to Nigeria in Abuja Nigeria' },
   ...[1, 2, 3, 4].map((n) => ({ src: `/images/staff/staff-${n}.jpg`, label: 'STAFF', alt: 'Bermutex staff at work during a clean-up exercise' })),
   ...CONSTRUCTION_GALLERY.map((g) => ({ src: g.src, label: 'CONSTRUCTION TRUCKS', alt: g.alt })),
+];
+
+// Full management team, listed under the leadership photos.
+export const MANAGEMENT = [
+  { name: 'Catechist Ambrose Jonah', role: 'GM / CEO', photo: '/images/ceo.jpg', pos: 'center 25%' },
+  { name: 'Mrs Rita Jonah', role: 'Managing Director', photo: '/images/md.jpg', pos: 'center 25%' },
+  { name: 'Engr Stephen Jonah', role: 'Director of Operations' },
+  { name: 'Chukwulobe Ndonwanne Leonard', role: 'Director of Finance', photo: '/images/cfo.jpg', pos: 'center 15%' },
+  { name: 'Engr Amaechi Chibuike', role: 'Engineer, MNSE' },
+  { name: 'Okechukwu Francis Matthew', role: 'Safety Manager' },
+  { name: 'Olunkwa Ifeanyi', role: 'Legal' },
 ];
 
 export const STAFF = {
@@ -274,10 +302,10 @@ export const LEADERS = [
         blocks: [
           { type: 'eyebrow', text: 'Managing Director' },
           { type: 'title', text: 'Mrs Jonah Rita' },
-          { type: 'p', text: 'Mrs Jonah Rita is the Managing Director of Bermutex Investment Limited. She oversees the day-to-day running of the company and works closely with the Chief Executive Officer and the Chief Financial Officer to keep every division focused on quality, accountability and client satisfaction.' },
+          { type: 'p', text: 'Mrs Jonah Rita is the Managing Director of Bermutex Investment Limited. She oversees the day-to-day running of the company and works closely with the Chief Executive Officer and the Director of Finance to keep every division focused on quality, accountability and client satisfaction.' },
           { type: 'h', text: 'Her Role' },
           { type: 'list', items: [
-            'Directing daily operations across the company’s five divisions.',
+            'Directing daily operations across the company’s six divisions.',
             'Coordinating teams, partners and project delivery.',
             'Upholding the company’s standards of integrity and service.',
           ] },
@@ -303,15 +331,15 @@ export const LEADERS = [
   {
     id: 'cfo',
     name: 'Chukwulobe Ndonwanne Leonard',
-    role: 'Chief Financial Officer',
-    badge: 'CFO',
+    role: 'Director of Finance',
+    badge: 'DOF',
     spreads: [
       {
         photo: '/images/cfo.jpg',
         photoPos: 'center 15%',
-        caption: 'Chukwulobe Ndonwanne Leonard, Chief Financial Officer',
+        caption: 'Chukwulobe Ndonwanne Leonard, Director of Finance',
         blocks: [
-          { type: 'eyebrow', text: 'Chief Financial Officer' },
+          { type: 'eyebrow', text: 'Director of Finance' },
           { type: 'title', text: 'Chukwulobe Ndonwanne Leonard' },
           { type: 'p', text: 'Leonard is a Chartered Accountant, Taxation Specialist, Forensic Accountant and Procurement Management professional with over 15 years of experience across public practice, corporate advisory, public sector management and academic lecturing.' },
           { type: 'h', text: 'Career Journey' },

@@ -323,6 +323,7 @@ button { font: inherit; }
 .chip-3 { bottom: 24%; left: -2%; animation-delay: -2s; }
 .chip-4 { bottom: 6%; right: 6%; animation-delay: -4s; }
 .chip-5 { bottom: 42%; right: -4%; animation-delay: -5s; }
+.chip-6 { top: 44%; left: -6%; animation-delay: -2.5s; }
 
 /* ---------- Page hero ---------- */
 .page-hero { position: relative; overflow: hidden; padding: calc(var(--header-h) + 84px) 0 76px; }
@@ -435,7 +436,7 @@ button { font: inherit; }
 .dc-list svg, .fb-list svg { color: var(--gold-mid); flex-shrink: 0; }
 .division-card .btn { align-self: flex-start; margin-top: auto; }
 
-.mini-div-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.mini-div-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .mini-div { height: 100%; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px; text-decoration: none; font-weight: 700; color: var(--navy); line-height: 1.3; transition: transform 0.4s var(--ease); }
 .mini-div:hover { transform: translateY(-6px); color: var(--navy); }
 
@@ -840,7 +841,7 @@ a.contact-card:hover { transform: translateY(-4px); color: var(--ink); }
   .float-chip { font-size: 12.5px; padding: 8px 12px 8px 8px; }
   .chip-icon { width: 26px; height: 26px; }
   .chip-2 { right: 2%; }
-  .chip-5 { display: none; }
+  .chip-5, .chip-6 { display: none; }
   .about-band-grid, .about-band-grid.three { grid-template-columns: 1fr; padding-top: 64px; padding-bottom: 64px; }
   .why-grid, .service-grid, .division-cards, .div-pager, .form-row { grid-template-columns: 1fr; }
   .mini-div-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1049,6 +1050,25 @@ a.contact-card:hover { transform: translateY(-4px); color: var(--ink); }
   .marquee-track { animation: none !important; }
 }
 
+
+
+/* ---------- Management team list ---------- */
+.mgmt { margin-top: 64px; }
+.mgmt-head { margin-bottom: 24px; }
+.mgmt-head h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.6vw, 32px); color: var(--navy); }
+.mgmt-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.mgmt-card { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 18px; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.mgmt-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.mgmt-avatar { width: 56px; height: 56px; flex: 0 0 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #fff, 0 6px 16px rgba(11, 42, 99, 0.2); }
+.mgmt-initials { display: grid; place-items: center; background: linear-gradient(135deg, var(--navy), #1b4592); color: var(--gold-bright); font-family: var(--font-display); font-weight: 700; font-size: 19px; }
+.mgmt-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mgmt-text strong { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.25; color: var(--navy); }
+.mgmt-text em { font-style: normal; font-size: 13.5px; font-weight: 600; color: var(--gold-text); }
+.flipbook + .mgmt { margin-top: 80px; }
+@media (max-width: 640px) {
+  .mgmt { margin-top: 48px; }
+  .mgmt-list { grid-template-columns: 1fr; gap: 12px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

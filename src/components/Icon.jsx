@@ -32,6 +32,7 @@ const PATHS = {
       <path d="M8.8 8.6c.3 2.9 3.4 6 6.4 6.4l1.2-1.4-1.9-1-1 .7c-1-.5-2.2-1.7-2.7-2.7l.7-1-1-1.9z" />
     </>
   ),
+  anchor: <><circle cx="12" cy="5" r="2.2" /><path d="M12 7.2V21" /><path d="M8 11h8" /><path d="M4 13a8 8 0 0 0 16 0" /><path d="m4 13-1.5 1.5M4 13l1.5 1.5M20 13l-1.5 1.5M20 13l1.5 1.5" /></>,
   mail: <><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m4 7 8 6 8-6" /></>,
   arrowRight: <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>,
   arrowLeft: <><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></>,
