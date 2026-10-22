@@ -7,7 +7,7 @@ export const COMPANY = {
   short: 'Bermutex',
   phoneDisplay: '+234 808 831 7742',
   phoneIntl: '2348088317742',
-  email: 'bermutexinvestmentltd@gmail.com',
+  email: 'info@bermutexinvestmentlimited.org',
   location: '82 Kaduna Street, by Enugu Road, Umuahia, Abia State',
 };
 
